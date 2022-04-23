@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "90a4b052-9f49-49ab-99da-cb2ca630ba23",
+		"name": "MicroServiceZuulAuth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8085/oauth/token?grant_type=password&username=user@gmail.com&password=user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/oauth/token?grant_type=password&username=user@gmail.com&password=user",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "username",
+							"value": "user@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8085/morning/message",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 6a4bebc8-ff09-45bb-8d39-5244dba12af3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8085/morning/message",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"morning",
+						"message"
+					],
+					"query": [
+						{
+							"key": "Authorizatiojn",
+							"value": "bearer 145127e0-2ddb-4fdc-85b4-e27b91e83d1f",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

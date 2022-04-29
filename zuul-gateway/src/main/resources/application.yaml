@@ -49,6 +49,11 @@ zuul:
       path: /noon/**
       stripPrefix: false
       serviceId: good-afternoon
+    morningservicesecured:
+      sensitiveHeaders:
+      path: /morning-secured/**
+      stripPrefix: false
+      serviceId: good-morning-secured
 
 
       #      ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin

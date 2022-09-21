@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "7cb3f3c7-3b4f-4bc3-a67b-c889db391cf8",
+		"name": "MicroServiceZuulAuth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16250941"
+	},
+	"item": [
+		{
+			"name": "1.Get Token(Zuul)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/oauth/token?grant_type=password&username=user@gmail.com&password=user",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "password"
+						},
+						{
+							"key": "username",
+							"value": "user@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.Validate Token(oauth)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic Y2xpZW50OnNlY3JldA==",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/oauth/check_token?token=937b25df-0560-44bb-a894-99bab3ebcefa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"check_token"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "937b25df-0560-44bb-a894-99bab3ebcefa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.Message MS without token(Zuul) (failed)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/morning/message",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"morning",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.Message MS with token(Zuul)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 937b25df-0560-44bb-a894-99bab3ebcefa",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8085/morning/message",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"morning",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.Message MS without token(Direct)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8084/morning/message",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"morning",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6.Message MS Secured with token(Zuul)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 937b25df-0560-44bb-a894-99bab3ebcefa",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8085/morning-secured/message",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"morning-secured",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.Message MS Secured without token(direct) (failed)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/morning-secured/message",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"morning-secured",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8.Message MS Secured with token(direct)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 937b25df-0560-44bb-a894-99bab3ebcefa",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8090/morning-secured/message",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"morning-secured",
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

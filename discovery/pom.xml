@@ -7,7 +7,7 @@
     <artifactId>discovery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>discovery</name>
-    <description>Demo project for Spring Cloud Security.</description>
+    <description>Spring demo project for Spring Cloud Security.</description>
     <packaging>jar</packaging>
 
 
